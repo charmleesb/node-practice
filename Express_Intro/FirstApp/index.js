@@ -34,9 +34,19 @@ app.get('/dogs', (req, res) => {
 // /cats => 'meow'
 // /dogs => 'woof'
 // '/'
+
+app.get('/search', (req, res) => {
+    const { q } = req.query;
+    if (!q) {
+        res.send('NOTHING FOUND IF NOTHING SEARCHED')
+    }
+    res.send(`<h1>Search results for: ${q}</h1>`)
+})
+
 app.listen(8080, () => {
     console.log('LISENING ON PORT 8080!')
 })
+
 
 app.get('*', (req, res) => {
     res.send(`I don't know taht path!`)
